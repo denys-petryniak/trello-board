@@ -7,5 +7,8 @@ export default defineNuxtConfig({
     // https://www.npmjs.com/package/@vueuse/nuxt
     '@vueuse/nuxt'
   ],
+  typescript: {
+    strict: true
+  },
   devtools: { enabled: true }
 })
