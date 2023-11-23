@@ -9,7 +9,7 @@ defineProps<{
 <template>
   <div
     :title="task.createdAt.toLocaleDateString()"
-    class="task flex max-w-[250px] mb-2 p-2 rounded bg-white shadow-sm"
+    class="task flex max-w-[250px] mb-2 p-2 break-normal rounded bg-white shadow-sm"
   >
     <DragHandle />
     <span>{{ task.title }}</span>
@@ -17,6 +17,10 @@ defineProps<{
 </template>
 
 <style>
+.task {
+  word-break: break-word;
+}
+
 .sortable-drag .task {
   transform: rotate(5deg);
 }

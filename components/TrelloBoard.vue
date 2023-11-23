@@ -82,9 +82,7 @@ const isAltKeyPressed = useKeyModifier('Alt')
             </template>
           </draggable>
           <footer>
-            <button class="text-gray-500">
-              + Add a card
-            </button>
+            <NewTask @add="column.tasks.push($event)" />
           </footer>
         </div>
       </template>
