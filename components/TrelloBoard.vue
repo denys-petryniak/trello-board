@@ -48,25 +48,57 @@ const columns = ref<Column[]>([
 ])
 
 const isAltKeyPressed = useKeyModifier('Alt')
+
+function deleteTask (currentColumn: Column, currentTask: Task) {
+  currentColumn.tasks = currentColumn.tasks.filter(task => task.id !== currentTask.id)
+}
+
+function createColumn () {
+  const column: Column = {
+    id: nanoid(),
+    title: '',
+    tasks: []
+  }
+
+  columns.value.push(column)
+
+  nextTick(() => {
+    (document.querySelector('.column:last-of-type .title-input') as HTMLInputElement).focus()
+  })
+}
+
+function deleteColumn (currentColumn: Column) {
+  if (currentColumn.title === '') {
+    columns.value = columns.value.filter(column => column.id !== currentColumn.id)
+  }
+
+  return null
+}
 </script>
 
 <template>
-  <div>
+  <div class="flex items-start gap-4 py-4 overflow-x-auto">
     <draggable
       v-model="columns"
       group="columns"
       item-key="id"
       handle=".drag-handle"
       :animation="150"
-      class="columns flex items-start gap-4 py-4 overflow-x-auto"
+      class="flex items-start gap-4"
     >
       <template #item="{ element: column }: { element: Column }">
         <div
-          class="min-w-[250px] p-5 rounded bg-gray-200"
+          class="column min-w-[250px] p-5 rounded bg-gray-200"
         >
           <header class="mb-4 font-bold">
             <DragHandle />
-            {{ column.title }}
+            <input
+              v-model="column.title"
+              type="text"
+              class="title-input w-4/5 px-1 rounded bg-transparent focus:bg-white"
+              @keyup.enter="($event.target as HTMLInputElement).blur()"
+              @keydown.backspace="deleteColumn(column)"
+            >
           </header>
           <draggable
             v-model="column.tasks"
@@ -79,7 +111,7 @@ const isAltKeyPressed = useKeyModifier('Alt')
               <div>
                 <TrelloBoardTask
                   :task="task"
-                  @delete="column.tasks = column.tasks.filter(task => task.id !== $event)"
+                  @delete="deleteTask(column, task)"
                 />
               </div>
             </template>
@@ -90,5 +122,11 @@ const isAltKeyPressed = useKeyModifier('Alt')
         </div>
       </template>
     </draggable>
+    <button
+      class="p-2 rounded whitespace-nowrap bg-gray-200 opacity-50"
+      @click="createColumn"
+    >
+      + Add Another Column
+    </button>
   </div>
 </template>

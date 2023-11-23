@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { Task, ID } from '~/types'
+import type { Task } from '~/types'
 
-const props = defineProps<{
+defineProps<{
   task: Task
 }>()
 
-const emit = defineEmits<{(event: 'delete', payload: ID): void}>()
+const emit = defineEmits<{(event: 'delete'): void}>()
 
 const focused = ref(false)
 
@@ -13,7 +13,7 @@ onKeyStroke('Backspace', (e) => {
   if (focused.value) {
     e.preventDefault()
 
-    emit('delete', props.task.id)
+    emit('delete')
   }
 })
 </script>
