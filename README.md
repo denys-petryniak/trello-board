@@ -1,3 +1,7 @@
+# Simple Trello Board
+
+![image](https://github.com/denys-petryniak/trello-board/assets/16530588/92ea2804-623c-4933-ba27-190d7a71ac2b)
+
 # Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
