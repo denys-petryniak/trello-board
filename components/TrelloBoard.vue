@@ -58,7 +58,7 @@ const isAltKeyPressed = useKeyModifier('Alt')
       item-key="id"
       handle=".drag-handle"
       :animation="150"
-      class="flex items-start gap-4 overflow-x-auto"
+      class="columns flex items-start gap-4 py-4 overflow-x-auto"
     >
       <template #item="{ element: column }: { element: Column }">
         <div
@@ -76,7 +76,9 @@ const isAltKeyPressed = useKeyModifier('Alt')
             :animation="150"
           >
             <template #item="{ element: task }: { element: Task }">
-              <TrelloBoardTask :task="task" />
+              <div>
+                <TrelloBoardTask :task="task" />
+              </div>
             </template>
           </draggable>
           <footer>
