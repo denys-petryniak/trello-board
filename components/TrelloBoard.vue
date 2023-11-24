@@ -49,11 +49,15 @@ const columns = useLocalStorage<Column[]>('trelloBoard', [
 
 const isAltKeyPressed = useKeyModifier('Alt')
 
-function deleteTask (currentColumn: Column, currentTask: Task) {
+function addTask (column: Column, task: Task): void {
+  column.tasks.push(task)
+}
+
+function deleteTask (currentColumn: Column, currentTask: Task): void {
   currentColumn.tasks = currentColumn.tasks.filter(task => task.id !== currentTask.id)
 }
 
-function createColumn () {
+function createColumn (): void {
   const column: Column = {
     id: nanoid(),
     title: '',
@@ -117,7 +121,7 @@ function deleteColumn (currentColumn: Column) {
             </template>
           </draggable>
           <footer>
-            <NewTask @add="column.tasks.push($event)" />
+            <NewTask @add="task => addTask(column, task)" />
           </footer>
         </div>
       </template>
