@@ -2,13 +2,19 @@
 
 ![image](https://github.com/denys-petryniak/trello-board/assets/16530588/92ea2804-623c-4933-ba27-190d7a71ac2b)
 
+## Explore in StackBlitz
+
+Click the button below to open the project in StackBlitz for preview and experimentation:
+
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/denys-petryniak/trello-board)
 
-# Nuxt 3 Minimal Starter
+Feel free to explore the code, make changes, and see the results in real-time!
+
+## Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Setup
+### Setup
 
 Make sure to install the dependencies:
 
@@ -26,7 +32,7 @@ yarn install
 bun install
 ```
 
-## Development Server
+### Development Server
 
 Start the development server on `http://localhost:3000`:
 
@@ -44,7 +50,7 @@ yarn dev
 bun run dev
 ```
 
-## Production
+### Production
 
 Build the application for production:
 
